@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineExperience from "../components/TimeLineExperience.astro";
+import TimeLineEducation from '@components/TimeLineEducation.astro';
+
+const experience = [
+  {
+    id: 0,
+    company: "Gain Life",
+    position: "Solutions Engineer",
+    date: "August 2023 - Present",
+    description: ["abc", "abc"],
+  },
+  {
+    id: 1,
+    company: "SKYGEN USA",
+    location: 'Milwaukee, WI',
+    position: "Software Engineer",
+    date: "January 2020 - September 2021",
+    description: [
+      "Developed .NET Core MVC applications, using SQL for the database and C# for the APIs and views. Also developed a Blazor UI that showed test coverage accross the codebase",
+      "Used Selenium and NUnit to write automated unit tests, UI tests and integration tests",
+      "Participated in a SCRUM team",
+      "Mentored a newly hired  engineer",
+    ],
+  },
+  {
+    id: 2,
+    company: "Universtiy School of Milwaukee",
+    location: 'Milwaukee, WI',
+    position: "IT Support, Academic Technology",
+    date: "August 2020 - February 2020",
+    description: [
+       "Provided IT support for faculty, staff, students, and parents",
+    ],
+  },
+  {
+    id: 3,
+    company: "MakeMusic - Peaksware",
+    location: 'Boulder, CO',
+    position: "Software Engineer Intern",
+    date: "Summer 2019",
+    description: [
+      "Fully migrated company appserver hosting from Windows to Linux, running eleven inter-communicating applications from one server, saving the company considerable costs in Windows licensing and maintenance",
+      "Automated building and deployment of new servers for each push to production",
+      "Extensive use of AWS EC2, AWS CloudFormation, Packer, Nginx, Systemd, git, Elasticsearch/Filebeat, SSL. Extensive exposure to Agile, DevOps",
+      "Started project of migrating local app development to Docker containers",
+    ],
+  },
+  {
+    id: 4,
+    company: "DirectSupply",
+    location: 'Milwaukee, WI',
+    position: "Software Engineer Intern",
+    date: "Summer 2017",
+    description: [
+      "Developed database frontend for company servers using SQL and the Outsystems web platform",
+    ],
+  },
+]
+
+const education = [
+  {
+    id: 0,
+    degree: "B.A. Computer Science",
+    years: "2016-2020",
+    school: "University of Colorado - Boulder",
+    gpa: "4.0",
+  },
+  {
+    id: 1,
+    degree: "B.M. Bassoon Performance",
+    years: "2016-2020",
+    school: "University of Colorado - Boulder",
+  },
+  {
+    id: 2,
+    degree: "M.M. Bassoon Performance",
+    years: "2021-2023",
+    school: "University of Miami - Frost School of Music",
+  },
+]
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="resume">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Profile</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    {experience.map(e => 
+      <TimeLineExperience
+        title={e.position}
+        company={e.company}
+        subtitle={`${e.date}, ${e.location}`}
+      >
+      <ul>
+        {e.description.map(d => <li class="list-disc">{d}</li>)}
+      </ul>
+      </TimeLineExperience>
+    )}
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    {education.map(e =>
+      <TimeLineEducation
+        title={e.degree}
+        years={e.years}
+        school={e.school}
+        gpa={e?.gpa}
+      />)}
+  </div>
+
+  </ul>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Skills</div>
+  </div>
+
+  <ul class="list-disc md:columns-5 columns-2 mx-6">
+    <li>JavaScript</li>
+    <li>React.JS</li>
+    <li>Express.JS</li>
+    <li>Git</li>
+    <li>Python</li>
+    <li>C++</li>
+    <li>NextJS</li>
+    <li>C#</li>
+    <li>AWS</li>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Linux</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+  </ul>
+</BaseLayout>
